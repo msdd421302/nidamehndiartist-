@@ -1,0 +1,26 @@
+{
+  "entities": {
+    "booking": {
+      "title": "Booking",
+      "description": "A bridal mehndi booking request.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "description": "UID of the user who made the booking." },
+        "userName": { "type": "string", "description": "Name of the user." },
+        "userEmail": { "type": "string", "description": "Email of the user." },
+        "weddingDate": { "type": "string", "format": "date", "description": "Selected wedding date." },
+        "packageName": { "type": "string", "enum": ["Classic", "Premium", "Royal"], "description": "Selected package." },
+        "status": { "type": "string", "enum": ["pending", "confirmed", "cancelled"], "description": "Status of the booking." },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Timestamp of creation." },
+        "updatedAt": { "type": "string", "format": "date-time", "description": "Timestamp of last update." }
+      },
+      "required": ["userId", "userName", "userEmail", "weddingDate", "packageName", "status", "createdAt", "updatedAt"]
+    }
+  },
+  "firestore": {
+    "/bookings/{bookingId}": {
+      "schema": "booking",
+      "description": "Collection of mehndi bookings."
+    }
+  }
+}
